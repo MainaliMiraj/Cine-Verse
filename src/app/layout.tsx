@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Playfair_Display } from "next/font/google";
+import { PT_Sans_Narrow } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 
-const inter = Playfair_Display({ subsets: ["latin"] });
+const inter = PT_Sans_Narrow({ subsets: ["latin"], weight: "700" });
 
 export const metadata: Metadata = {
   title: "Create Next App",
