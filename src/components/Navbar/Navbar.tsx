@@ -11,7 +11,7 @@ const Navbar = () => {
 
   return (
     <div className="flex justify-center items-center flex-col">
-      <div className="w-11/12 bg-slate-200 mt-2 px-10 py-4 sm:rounded-full flex justify-between items-center flex-row rounded-b-none rounded-t-full">
+      <div className="w-11/12 bg-slate-200 mt-2 px-10 py-4 sm:rounded-full flex justify-between items-center flex-row rounded-b-none rounded-t-full ">
         <Link href={"/"}>
           <Image
             src={"/images/CineVerse.png"}

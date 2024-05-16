@@ -4,12 +4,12 @@ export const NavbarTopics = [
     location: "now-playing",
   },
   {
-    title: "Popular",
-    location: "/popular",
-  },
-  {
     title: "Upcomming",
     location: "/upcomming",
+  },
+  {
+    title: "Popular",
+    location: "/popular",
   },
   {
     title: "Top Rated",
