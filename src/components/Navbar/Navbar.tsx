@@ -18,7 +18,7 @@ const Navbar = () => {
             alt="logo"
             height={50}
             width={50}
-            className="h-10 w-10 cursor-pointer rounded-full"
+            className="h-10 w-10 cursor-pointer rounded-full transition-all hover:scale-110"
             priority
           />
         </Link>
@@ -27,17 +27,17 @@ const Navbar = () => {
           className="sm:hidden"
         >
           {isButtonClosed ? (
-            <IoMdClose className="h-6 w-10 font-bold hover:scale-125 hover:text-blue-400 transition-all" />
+            <IoMdClose className="h-6 w-10 font-bold transition-all hover:scale-110 hover:text-blue-400" />
           ) : (
-            <RxHamburgerMenu className="h-6 w-10 font-bold hover:scale-125 hover:text-blue-400 transition-all" />
+            <RxHamburgerMenu className="h-6 w-10 font-bold transition-all hover:scale-110 hover:text-blue-400" />
           )}
         </button>
-        <div className="mx-5 hidden md:block ">
+        <div className="mr-5 hidden transition-all sm:block">
           {NavbarTopics.map((eachTopic) => (
             <Link
               href={eachTopic.location}
               key={eachTopic.title}
-              className={`w-full p-2 text-center transition-all hover:scale-105 hover:text-blue-400`}
+              className="w-full p-4 text-center transition-all  hover:text-sm hover:text-blue-400"
             >
               {eachTopic.title}
             </Link>
@@ -50,7 +50,7 @@ const Navbar = () => {
             <Link
               href={eachTopic.location}
               key={eachTopic.title}
-              className="w-full  p-2 text-center  text-blue-300 transition-all  duration-150 ease-in-out hover:scale-105 hover:text-blue-400"
+              className="w-full  p-2 py-2 text-center  text-blue-300 transition-all  duration-150 ease-in-out hover:scale-95 hover:text-blue-400"
               onClick={() => setIsButtonClosed(!isButtonClosed)}
             >
               {eachTopic.title}
