@@ -2,23 +2,30 @@ import React from "react";
 import Button from "../Buttons/Buttons";
 import { CiSearch } from "react-icons/ci";
 
-const SearchComponent = () => {
+interface SearchComponentProps {
+  buttonName?: string;
+  inputPlaceholder: string;
+}
+
+const SearchComponent = ({
+  buttonName,
+  inputPlaceholder,
+}: SearchComponentProps) => {
   return (
-    <div className="flex w-full items-center flex-col gap-3 justify-center">
+    <div className="mt-16 flex w-11/12 items-center justify-between rounded-full border border-blue-300 text-blue-300 focus:border-blue-600 sm:w-8/12">
       <input
         type="search"
-        placeholder="Search your movie here..."
-        className="p-4 mt-32 rounded-full w-10/12 text-center border-2 border-orange-300 placeholder-orange-200 caret-orange-400 place outline-none focus:border-orange-400"
+        placeholder={inputPlaceholder}
+        className="  w-8/12 rounded-full bg-transparent p-4 text-center placeholder-blue-200 caret-blue-400 outline-none transition-all duration-75 focus:scale-105 flex-grow"
       />
-      {/* <button className="rounded-full text-center font-normal border-2 border-orange-300 w-3/12 hover:bg-orange-100">
-        Search
-      </button> */}
-      <div className="border border-orange-300 rounded-lg flex items-center justify-center hover:bg-orange-50">
+
+      <div className="h-14 grow-0 border-l border-blue-300"></div>
+
+      <div className="flex items-center justify-center grow-0 p-0">
         <Button
-          buttonName="Search"
-          bgColor="none"
+          bgColor="bg-transparent"
           icon={CiSearch}
-          textColor="text-orange-300"
+          textColor="text-blue-300"
         />
       </div>
     </div>

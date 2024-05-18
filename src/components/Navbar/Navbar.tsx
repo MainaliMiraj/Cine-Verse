@@ -10,15 +10,15 @@ const Navbar = () => {
   const [isButtonClosed, setIsButtonClosed] = useState(false);
 
   return (
-    <div className="flex justify-center items-center flex-col">
-      <div className="w-11/12 bg-slate-200 mt-2 px-10 py-4 sm:rounded-full flex justify-between items-center flex-row rounded-b-none rounded-t-full ">
+    <div className="flex flex-col items-center justify-center">
+      <div className="mt-2  flex w-11/12 flex-row items-center justify-between rounded-t-full px-10 py-4 text-blue-300 sm:rounded-full">
         <Link href={"/"}>
           <Image
             src={"/images/CineVerse.png"}
             alt="logo"
             height={50}
             width={50}
-            className="w-10 h-10 rounded-full cursor-pointer"
+            className="h-10 w-10 cursor-pointer rounded-full"
             priority
           />
         </Link>
@@ -27,17 +27,17 @@ const Navbar = () => {
           className="sm:hidden"
         >
           {isButtonClosed ? (
-            <IoMdClose className="w-10 h-6 font-bold hover:text-orange-400" />
+            <IoMdClose className="h-6 w-10 font-bold hover:scale-125 hover:text-blue-400 transition-all" />
           ) : (
-            <RxHamburgerMenu className="w-10 h-6 font-bold hover:text-orange-400" />
+            <RxHamburgerMenu className="h-6 w-10 font-bold hover:scale-125 hover:text-blue-400 transition-all" />
           )}
         </button>
-        <div className="hidden md:block mx-5">
+        <div className="mx-5 hidden md:block ">
           {NavbarTopics.map((eachTopic) => (
             <Link
               href={eachTopic.location}
               key={eachTopic.title}
-              className={`text-lg hover:text-orange-400  w-full p-2 rounded-md text-center hover:underline`}
+              className={`w-full p-2 text-center transition-all hover:scale-105 hover:text-blue-400`}
             >
               {eachTopic.title}
             </Link>
@@ -45,12 +45,12 @@ const Navbar = () => {
         </div>
       </div>
       {isButtonClosed && (
-        <div className="sm:hidden flex flex-col items-center justify-start bg-slate-200 w-11/12 gap-3 p-4 z-50  h-screen  transition-all duration-300 ease-in-out mt-1">
+        <div className="z-50 mt-1 flex h-screen w-11/12 flex-col items-center justify-start gap-2  p-4  transition-all duration-300 ease-in-out sm:hidden">
           {NavbarTopics.map((eachTopic) => (
             <Link
               href={eachTopic.location}
               key={eachTopic.title}
-              className="text-lg hover:text-orange-400 bg-slate-100 w-full p-2 rounded-md text-center border-2 hover:border-orange-400 transition-all duration-150 ease-in-out"
+              className="w-full  p-2 text-center  text-blue-300 transition-all  duration-150 ease-in-out hover:scale-105 hover:text-blue-400"
               onClick={() => setIsButtonClosed(!isButtonClosed)}
             >
               {eachTopic.title}

@@ -11,6 +11,8 @@ const config: Config = {
       colors: {
         primary: "#8697C4",
         secondary: "#ADBBDA",
+        moderatePink: "#C33764",
+        veryDarkBlue: "#1D2671",
       },
     },
   },
