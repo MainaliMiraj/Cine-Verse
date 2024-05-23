@@ -3,6 +3,8 @@ import Image from "next/image";
 import { FaStar } from "react-icons/fa";
 import Tooltip from "../Tooltip/Tooltip";
 import { useState } from "react";
+import Link from "next/link";
+import MovieCardDetails from "../MovieDetailsCard/MovieDetailsCard";
 
 interface MovieCardProps {
   image: string;
@@ -22,17 +24,21 @@ const MovieCard = ({
   const [showTooltip, setShowTooltip] = useState(false);
   let roundedNumStr = parseFloat(rating).toFixed(1);
 
+  function showDetails() {}
+
   return (
     <div
-      className="relative flex w-48 flex-col justify-between rounded-lg border border-blue-400 text-blue-300"
-      onMouseEnter={() => setShowTooltip(true)}
+      className="ease-in-outrounded-lg relative flex w-48 flex-col justify-between  border border-blue-400 text-blue-300 transition-all"
       onMouseLeave={() => setShowTooltip(false)}
     >
       {showTooltip ? (
         <Tooltip original_title={movieName} overview={overview} />
       ) : (
         <>
-          <div className="relative h-2/3 w-full overflow-hidden">
+          <div
+            className="relative h-2/3 w-full overflow-hidden"
+            onMouseEnter={() => setShowTooltip(true)}
+          >
             <Image
               src={image}
               alt="movie-thumbnail"
@@ -41,6 +47,7 @@ const MovieCard = ({
               width={100}
             />
           </div>
+
           <div className="flex justify-around p-2">
             <div className="flex items-center">
               <FaStar className="mr-1" color="yellow" />
@@ -51,8 +58,13 @@ const MovieCard = ({
             </div>
             <span className="mr-2 text-orange-700">HD</span>
           </div>
-          <div className="w-11/12 flex-1 cursor-pointer overflow-clip text-center text-lg font-bold hover:text-blue-100">
-            {movieName}
+          <div
+            className="w-11/12 flex-1 cursor-pointer overflow-clip text-center text-lg font-bold hover:text-blue-100"
+            onClick={showDetails}
+          >
+            <Link  href={'/movie-details'} target="_blank">
+              {movieName}
+            </Link>
           </div>
         </>
       )}

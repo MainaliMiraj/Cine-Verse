@@ -2,9 +2,8 @@
 import { useEffect, useState } from "react";
 import SearchComponent from "@/components/SearchComponent/SearchComponent";
 import MovieCard from "@/components/MovieCardComponent/MovieCard";
-import { MovieContextProvider } from "@/components/context/MovieDataContext";
 
-const basicImageUrl = "https://image.tmdb.org/t/p/w500";
+export const basicImageUrl = "https://image.tmdb.org/t/p/w500";
 interface Movie {
   id: number;
   poster_path: string;
@@ -28,27 +27,24 @@ export default function Home() {
     const { results } = data;
     setMoviesData(results);
   }
-  console.log(moviesData)
+  console.log(moviesData);
   return (
-    <MovieContextProvider>
-      <div className="relative  flex flex-col items-center">
-        <SearchComponent inputPlaceholder={"Search your movie here..."} />
+    <div className="relative  flex flex-col items-center">
+      <SearchComponent inputPlaceholder={"Search your movie here..."} />
 
-        <div className="mt-16 text-2xl text-blue-300">Popular Movies</div>
-        <div className="my-6 mt-6 grid w-10/12 grid-cols-2 gap-y-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-          {moviesData.map((eachMovie) => (
-            <MovieCard
-              key={eachMovie.id}
-              image={`${basicImageUrl}${eachMovie.poster_path}`}
-              movieName={eachMovie.original_title}
-              rating={eachMovie.vote_average}
-              year={eachMovie.release_date}
-              overview={eachMovie.overview}
-
-            />
-          ))}
-        </div>
+      <div className="mt-16 text-2xl text-blue-300">Popular Movies</div>
+      <div className="my-6 mt-6 grid w-10/12 grid-cols-2 gap-y-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        {moviesData.map((eachMovie) => (
+          <MovieCard
+            key={eachMovie.id}
+            image={`${basicImageUrl}${eachMovie.poster_path}`}
+            movieName={eachMovie.original_title}
+            rating={eachMovie.vote_average}
+            year={eachMovie.release_date}
+            overview={eachMovie.overview}
+          />
+        ))}
       </div>
-    </MovieContextProvider>
+    </div>
   );
 }

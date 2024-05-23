@@ -7,9 +7,9 @@ interface Movie {
 
 const Tooltip = ({ original_title, overview }: Movie) => {
   return (
-    <div className="p-2 overflow-scroll w-full h-full transition-all">
-      <h3 className="mb-1 text-lg font-semibold">{original_title}</h3>
-      <p className="text-sm text-blue-400">{overview}</p>
+    <div className="flex h-full w-full cursor-pointer flex-col overflow-scroll p-2">
+      <h3 className="mb-1 text-lg font-bold ">{original_title}</h3>
+      <p className="text-sm text-blue-400 ">{overview || "N/A"}</p>
     </div>
   );
 };

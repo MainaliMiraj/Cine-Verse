@@ -12,6 +12,7 @@ const SearchComponent = ({ inputPlaceholder }: SearchComponentProps) => {
     setSearchText("");
   }
 
+
   return (
     <div className="mt-6 flex w-11/12 items-center justify-between rounded-full border border-blue-300 text-blue-300 focus:border-blue-600 sm:w-10/12 lg:w-8/12">
       <input
