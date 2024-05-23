@@ -45,7 +45,7 @@ const Navbar = () => {
         </div>
       </div>
       {isButtonClosed && (
-        <div className="z-50 mt-1 flex h-screen w-11/12 flex-col items-center justify-start gap-2  p-4  transition-all duration-300 ease-in-out sm:hidden">
+        <div className=" mt-1 flex w-11/12 flex-col items-center justify-start gap-2  p-4  transition-all duration-300 ease-in-out sm:hidden">
           {NavbarTopics.map((eachTopic) => (
             <Link
               href={eachTopic.location}
