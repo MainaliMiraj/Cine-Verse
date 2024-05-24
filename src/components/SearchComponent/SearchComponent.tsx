@@ -1,17 +1,20 @@
 import React, { useState } from "react";
 import { CiSearch } from "react-icons/ci";
 
-
 interface SearchComponentProps {
   inputPlaceholder: string;
+  getSearchData: (searchDataValue: string) => void;
 }
 
-const SearchComponent = ({ inputPlaceholder }: SearchComponentProps) => {
+const SearchComponent = ({
+  inputPlaceholder,
+  getSearchData,
+}: SearchComponentProps) => {
   const [searchText, setSearchText] = useState("");
   function handleClick() {
+    getSearchData(searchText);
     setSearchText("");
   }
-
 
   return (
     <div className="mt-6 flex w-11/12 items-center justify-between rounded-full border border-blue-300 text-blue-300 focus:border-blue-600 sm:w-10/12 lg:w-8/12">

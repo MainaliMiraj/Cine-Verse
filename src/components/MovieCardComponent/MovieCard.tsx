@@ -59,10 +59,10 @@ const MovieCard = ({
             <span className="mr-2 text-orange-700">HD</span>
           </div>
           <div
-            className="w-11/12 flex-1 cursor-pointer overflow-clip text-center text-lg font-bold hover:text-blue-100"
+            className="w-11/12 flex-1 cursor-pointer overflow-clip text-center text-lg font-bold "
             onClick={showDetails}
           >
-            <Link  href={'/movie-details'} target="_blank">
+            <Link href={"/movie-details"} className="hover:text-blue-100">
               {movieName}
             </Link>
           </div>

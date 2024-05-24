@@ -15,22 +15,32 @@ interface Movie {
 
 export default function Home() {
   const [moviesData, setMoviesData] = useState<Movie[]>([]);
+  const [searchParam, setSearchParam] = useState("");
   useEffect(() => {
     requestMovieData();
-  }, []);
 
-  async function requestMovieData() {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/discover/movie?api_key=323e3fe5a8237f5319c4b400fb4bd2d9`,
-    );
-    const data = await response.json();
-    const { results } = data;
-    setMoviesData(results);
-  }
+    async function requestMovieData() {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/search/movie?query=${searchParam}&api_key=323e3fe5a8237f5319c4b400fb4bd2d9`,
+      );
+      const data = await response.json();
+      const { results } = data;
+      setMoviesData(results);
+    }
+  }, [searchParam]);
+
   console.log(moviesData);
+
+  function getSearchData(searchDataValue: string) {
+    setSearchParam(searchDataValue);
+  }
+
   return (
     <div className="relative  flex flex-col items-center">
-      <SearchComponent inputPlaceholder={"Search your movie here..."} />
+      <SearchComponent
+        inputPlaceholder={"Search your movie here..."}
+        getSearchData={getSearchData}
+      />
 
       <div className="mt-16 text-2xl text-blue-300">Popular Movies</div>
       <div className="my-6 mt-6 grid w-10/12 grid-cols-2 gap-y-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
