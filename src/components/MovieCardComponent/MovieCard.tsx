@@ -4,12 +4,11 @@ import { FaStar } from "react-icons/fa";
 import Tooltip from "../Tooltip/Tooltip";
 import { useState } from "react";
 import Link from "next/link";
-import MovieCardDetails from "../MovieDetailsCard/MovieDetailsCard";
 
 interface MovieCardProps {
   image: string;
   rating: string;
-  year: string;
+  year?: string;
   movieName: string;
   overview: string;
 }

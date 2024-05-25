@@ -4,7 +4,7 @@ import SearchComponent from "@/components/SearchComponent/SearchComponent";
 import MovieCard from "@/components/MovieCardComponent/MovieCard";
 
 export const basicImageUrl = "https://image.tmdb.org/t/p/w500";
-interface Movie {
+export  interface Movie {
   id: number;
   poster_path: string;
   original_title: string;
@@ -28,8 +28,6 @@ export default function Home() {
       setMoviesData(results);
     }
   }, [searchParam]);
-
-  console.log(moviesData);
 
   function getSearchData(searchDataValue: string) {
     setSearchParam(searchDataValue);
