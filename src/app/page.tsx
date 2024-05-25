@@ -4,7 +4,7 @@ import SearchComponent from "@/components/SearchComponent/SearchComponent";
 import MovieCard from "@/components/MovieCardComponent/MovieCard";
 
 export const basicImageUrl = "https://image.tmdb.org/t/p/w500";
-export  interface Movie {
+export interface Movie {
   id: number;
   poster_path: string;
   original_title: string;
@@ -40,7 +40,11 @@ export default function Home() {
         getSearchData={getSearchData}
       />
 
-      <div className="mt-16 text-2xl text-blue-300">Popular Movies</div>
+      {searchParam ?? (
+        <div className="mt-16 text-2xl text-blue-300">
+          You Searched for:{searchParam}
+        </div>
+      )}
       <div className="my-6 mt-6 grid w-10/12 grid-cols-2 gap-y-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {moviesData.map((eachMovie) => (
           <MovieCard

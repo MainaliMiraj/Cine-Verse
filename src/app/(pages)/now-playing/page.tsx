@@ -29,7 +29,7 @@ const NowPlaying = () => {
     }
     getNowPlaying();
   }, []);
-  console.log(nowPlaying);
+  
 
   return (
     <div className="relative  flex flex-col items-center">
