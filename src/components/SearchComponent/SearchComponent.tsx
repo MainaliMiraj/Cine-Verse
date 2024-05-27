@@ -11,6 +11,12 @@ const SearchComponent = ({
   getSearchData,
 }: SearchComponentProps) => {
   const [searchText, setSearchText] = useState("");
+
+  function handleKeyPress(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (event.key === "Enter") {
+      handleClick();
+    }
+  }
   function handleClick() {
     getSearchData(searchText);
     setSearchText("");
@@ -24,6 +30,7 @@ const SearchComponent = ({
         className="  w-6/12 flex-grow rounded-full bg-transparent p-4 text-center placeholder-blue-200 caret-blue-400 outline-none transition-all duration-75 focus:scale-105"
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
+        onKeyDown={handleKeyPress}
       />
 
       <div className="h-14 grow-0 border-l border-blue-300"></div>

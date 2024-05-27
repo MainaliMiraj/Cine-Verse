@@ -1,7 +1,8 @@
-import Image from "next/image";
+
 import MovieCardDetails from "@/components/MovieDetailsCard/MovieDetailsCard";
-import { useContext } from "react";
 function MovieCardDetailsPage() {
-//   return <MovieCardDetails />;
+  return (
+  <div className="text-white">movie details here</div>
+  );
 }
 export default MovieCardDetailsPage;

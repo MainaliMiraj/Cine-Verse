@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import SearchComponent from "@/components/SearchComponent/SearchComponent";
 import MovieCard from "@/components/MovieCardComponent/MovieCard";
 
-export const basicImageUrl = "https://image.tmdb.org/t/p/w500";
+export let basicImageUrl = "https://image.tmdb.org/t/p/w500";
 export interface Movie {
   id: number;
   poster_path: string;
@@ -40,23 +40,27 @@ export default function Home() {
         getSearchData={getSearchData}
       />
 
-      {searchParam ?? (
-        <div className="mt-16 text-2xl text-blue-300">
-          You Searched for:{searchParam}
-        </div>
+      {searchParam ? (
+        <>
+          <div className="mt-4 text-2xl text-blue-400 flex flex-row gap-x-2">
+            You searched for: <p className="text-orange-400 underline">{searchParam}</p>
+          </div>
+          <div className="my-6 mt-6 grid w-10/12 grid-cols-2 gap-y-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+            {moviesData.map((eachMovie) => (
+              <MovieCard
+                key={eachMovie.id}
+                image={`${basicImageUrl}${eachMovie.poster_path}`}
+                movieName={eachMovie.original_title}
+                rating={eachMovie.vote_average}
+                year={eachMovie.release_date}
+                overview={eachMovie.overview}
+              />
+            ))}
+          </div>
+        </>
+      ) : (
+        ""
       )}
-      <div className="my-6 mt-6 grid w-10/12 grid-cols-2 gap-y-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-        {moviesData.map((eachMovie) => (
-          <MovieCard
-            key={eachMovie.id}
-            image={`${basicImageUrl}${eachMovie.poster_path}`}
-            movieName={eachMovie.original_title}
-            rating={eachMovie.vote_average}
-            year={eachMovie.release_date}
-            overview={eachMovie.overview}
-          />
-        ))}
-      </div>
     </div>
   );
 }
