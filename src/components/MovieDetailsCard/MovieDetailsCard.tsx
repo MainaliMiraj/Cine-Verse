@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { basicImageUrl } from "@/app/page";
+import { basicImageUrl } from "@/Misc/misc";
 
 interface MovieCardDetailsProps {
   image: string;
