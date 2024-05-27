@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import MovieCard from "@/components/MovieCardComponent/MovieCard";
 import { useEffect } from "react";
-import { basicImageUrl } from "@/app/page";
+import { basicImageUrl } from "@/Misc/misc";
 import { Movie } from "@/app/page";
 
 const Popular = () => {

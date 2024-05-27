@@ -2,8 +2,8 @@
 import { useEffect, useState } from "react";
 import SearchComponent from "@/components/SearchComponent/SearchComponent";
 import MovieCard from "@/components/MovieCardComponent/MovieCard";
+import { basicImageUrl } from "@/Misc/misc";
 
-export let basicImageUrl = "https://image.tmdb.org/t/p/w500";
 export interface Movie {
   id: number;
   poster_path: string;

@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import MovieCard from "@/components/MovieCardComponent/MovieCard";
 import { useEffect } from "react";
-import { basicImageUrl } from "@/app/page";
+import { basicImageUrl } from "@/Misc/misc";
 export interface UpcommingProps {
   id: number;
   poster_path: string;
@@ -36,7 +36,6 @@ const Upcomming = () => {
     }
     getNowPlaying();
   }, []);
- 
 
   return (
     <div className="relative  flex flex-col items-center">

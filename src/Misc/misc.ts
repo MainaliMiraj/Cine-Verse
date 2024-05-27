@@ -47,3 +47,6 @@ export const genre = [
   "War & Politics",
   "Western",
 ];
+
+export const basicImageUrl = "https://image.tmdb.org/t/p/w500";
+
