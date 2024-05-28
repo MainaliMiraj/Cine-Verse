@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import SearchComponent from "@/components/SearchComponent/SearchComponent";
 import MovieCard from "@/components/MovieCardComponent/MovieCard";
-import { basicImageUrl } from "@/Misc/misc";
 
 export interface Movie {
   id: number;
@@ -21,7 +20,7 @@ export default function Home() {
 
     async function requestMovieData() {
       const response = await fetch(
-        `https://api.themoviedb.org/3/search/movie?query=${searchParam}&api_key=323e3fe5a8237f5319c4b400fb4bd2d9`,
+        `https://api.themoviedb.org/3/search/movie?query=${searchParam}&api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
       );
       const data = await response.json();
       const { results } = data;
@@ -42,19 +41,13 @@ export default function Home() {
 
       {searchParam ? (
         <>
-          <div className="mt-4 text-2xl text-blue-400 flex flex-row gap-x-2">
-            You searched for: <p className="text-orange-400 underline">{searchParam}</p>
+          <div className="mt-4 flex flex-row gap-x-2 text-2xl text-blue-400">
+            You searched for:{" "}
+            <p className="text-orange-400 underline">{searchParam}</p>
           </div>
           <div className="my-6 mt-6 grid w-10/12 grid-cols-2 gap-y-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
             {moviesData.map((eachMovie) => (
-              <MovieCard
-                key={eachMovie.id}
-                image={`${basicImageUrl}${eachMovie.poster_path}`}
-                movieName={eachMovie.original_title}
-                rating={eachMovie.vote_average}
-                year={eachMovie.release_date}
-                overview={eachMovie.overview}
-              />
+              <MovieCard key={eachMovie.id} {...eachMovie} />
             ))}
           </div>
         </>

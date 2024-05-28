@@ -4,24 +4,15 @@ import { FaStar } from "react-icons/fa";
 import Tooltip from "../Tooltip/Tooltip";
 import { useState } from "react";
 import Link from "next/link";
+import { Movie } from "@/app/page";
+import { basicImageUrl } from "@/Misc/misc";
 
-interface MovieCardProps {
-  image: string;
-  rating: string;
-  year?: string;
-  movieName: string;
-  overview: string;
-}
 
-const MovieCard = ({
-  image,
-  rating,
-  year,
-  movieName,
-  overview,
-}: MovieCardProps) => {
+
+const MovieCard = (props: Movie) => {
+  const { id, original_title, vote_average, overview, release_date,poster_path } = props;
   const [showTooltip, setShowTooltip] = useState(false);
-  let roundedNumStr = parseFloat(rating).toFixed(1);
+  let roundedNumStr = parseFloat(vote_average).toFixed(1);
 
   function showDetails() {}
 
@@ -31,7 +22,7 @@ const MovieCard = ({
       onMouseLeave={() => setShowTooltip(false)}
     >
       {showTooltip ? (
-        <Tooltip original_title={movieName} overview={overview} />
+        <Tooltip original_title={original_title} overview={overview} />
       ) : (
         <>
           <div
@@ -39,7 +30,7 @@ const MovieCard = ({
             onMouseEnter={() => setShowTooltip(true)}
           >
             <Image
-              src={image}
+              src={`${basicImageUrl}${poster_path}`}
               alt="movie-thumbnail"
               className="max-h-80 w-full rounded-t-lg transition-all hover:scale-105"
               height={100}
@@ -53,7 +44,7 @@ const MovieCard = ({
               <span>{roundedNumStr}</span>
             </div>
             <div className="flex items-center justify-between">
-              <span>{year}</span>
+              <span>{release_date}</span>
             </div>
             <span className="mr-2 text-orange-700">HD</span>
           </div>
@@ -61,8 +52,8 @@ const MovieCard = ({
             className="w-11/12 flex-1 cursor-pointer overflow-clip text-center text-lg font-bold "
             onClick={showDetails}
           >
-            <Link href={"/movie-details"} className="hover:text-blue-100">
-              {movieName}
+            <Link href={`/movie-details/${id}`} className="hover:text-blue-100">
+              {original_title}
             </Link>
           </div>
         </>

@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import MovieCard from "@/components/MovieCardComponent/MovieCard";
 import { useEffect } from "react";
-import { basicImageUrl } from "@/Misc/misc";
+
 import { Movie } from "@/app/page";
 
 const NowPlaying = () => {
@@ -15,8 +15,7 @@ const NowPlaying = () => {
         method: "GET",
         headers: {
           accept: "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkYzNhOGJmNTAxMzAwYmFhYTYxOTFiMTI1YjIwZGJmNiIsInN1YiI6IjY0NDRjZDNhMmM2YjdiMDQ5NDdlZGVhNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.yPzKlBkc8IP670jo1Bl2g8QXa5JnLGUxaqT6Jdp0awE",
+          Authorization: process.env.NEXT_PUBLIC_BEARER_ID as string,
         },
       };
       const response = await fetch(
@@ -29,21 +28,13 @@ const NowPlaying = () => {
     }
     getNowPlaying();
   }, []);
-  
 
   return (
     <div className="relative  flex flex-col items-center">
       <div className="mt-16 text-2xl text-blue-300">Now Playing</div>
       <div className="my-6 mt-6 grid w-10/12 grid-cols-2 gap-y-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {nowPlaying.map((eachMovie) => (
-          <MovieCard
-            key={eachMovie.id}
-            image={`${basicImageUrl}${eachMovie.poster_path}`}
-            movieName={eachMovie.original_title}
-            rating={eachMovie.vote_average}
-            year={eachMovie.release_date}
-            overview={eachMovie.overview}
-          />
+          <MovieCard key={eachMovie.id} {...eachMovie} />
         ))}
       </div>
     </div>
