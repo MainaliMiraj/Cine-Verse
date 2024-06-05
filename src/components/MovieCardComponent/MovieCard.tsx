@@ -18,7 +18,7 @@ const MovieCard = (props: Movie) => {
 
   return (
     <div
-      className="ease-in-outrounded-lg relative flex w-48 flex-col justify-between  border border-blue-400 text-blue-300 transition-all"
+      className="ease-in-outrounded-lg relative flex w-48 flex-col justify-between  border border-blue-400 text-blue-300 transition-all hover:border-1 hover:border-white group"
       onMouseLeave={() => setShowTooltip(false)}
     >
       {showTooltip ? (
@@ -32,7 +32,7 @@ const MovieCard = (props: Movie) => {
             <Image
               src={`${basicImageUrl}${poster_path}`}
               alt="movie-thumbnail"
-              className="max-h-80 w-full rounded-t-lg transition-all hover:scale-105"
+              className="max-h-80 w-full rounded-t-lg transition-all hover:scale-105 group-hover:scale-105"
               height={100}
               width={100}
             />
@@ -52,7 +52,7 @@ const MovieCard = (props: Movie) => {
             className="w-11/12 flex-1 cursor-pointer overflow-clip text-center text-lg font-bold "
             onClick={showDetails}
           >
-            <Link href={`/movie-details/${id}`} className="hover:text-blue-100">
+            <Link href={`/movie-details/${id}`} className="hover:text-blue-100 hover:underline trackling-wide">
               {original_title}
             </Link>
           </div>

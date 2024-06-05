@@ -1,10 +1,20 @@
 "use client";
 import { useParams } from "next/navigation";
-import MovieCardDetails from "@/components/MovieDetailsCard/MovieDetailsCard";
+import MovieCardDetails, { ProductionCompany } from "@/components/MovieDetailsCard/MovieDetailsCard";
 import { useEffect, useState } from "react";
+
+interface MovieDetails {
+  title: string;
+  poster_path: string;
+  release_date: string;
+  overview: string;
+  production_companies: ProductionCompany[];
+  homepage: string;
+}
+
 function MovieCardDetailsPage() {
   const { id } = useParams();
-  const [movieDetails, setMovieDetails] = useState(null);
+  const [movieDetails, setMovieDetails] = useState<MovieDetails | null>(null);
 
   useEffect(() => {
     requestMovieData();
@@ -28,9 +38,12 @@ function MovieCardDetailsPage() {
   }, [id]);
 
   console.log(movieDetails);
+  if (!movieDetails) {
+    return <p>Loading......</p>;
+  }
 
   return (
-    <div className="flex items-center justify-center text-white">
+    <div className="flex items-center justify-center p-6 text-white">
       <MovieCardDetails
         title={movieDetails?.title}
         image={movieDetails?.poster_path}
@@ -39,7 +52,6 @@ function MovieCardDetailsPage() {
         // key={movieDetails.id}
         productionCompany={movieDetails?.production_companies}
         website_url={movieDetails?.homepage}
-
       />
     </div>
   );
