@@ -1,6 +1,8 @@
 "use client";
 import { useParams } from "next/navigation";
-import MovieCardDetails, { ProductionCompany } from "@/components/MovieDetailsCard/MovieDetailsCard";
+import MovieCardDetails, {
+  ProductionCompany,
+} from "@/components/MovieDetailsCard/MovieDetailsCard";
 import { useEffect, useState } from "react";
 
 interface MovieDetails {
@@ -10,6 +12,7 @@ interface MovieDetails {
   overview: string;
   production_companies: ProductionCompany[];
   homepage: string;
+  vote_average: string;
 }
 
 function MovieCardDetailsPage() {
@@ -52,6 +55,7 @@ function MovieCardDetailsPage() {
         // key={movieDetails.id}
         productionCompany={movieDetails?.production_companies}
         website_url={movieDetails?.homepage}
+        imdbRating={movieDetails?.vote_average}
       />
     </div>
   );
